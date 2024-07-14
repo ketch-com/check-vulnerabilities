@@ -1,0 +1,13 @@
+name: "Check Dependabot Alerts"
+description: "Check for high or critical dependabot alerts and block PRs if any are found."
+inputs:
+  github-token:
+    description: "GitHub token"
+    required: true
+  fail-threshold:
+    description: "Severity threshold at which the action should fail (low, moderate, high, critical)"
+    required: false
+    default: "high"
+runs:
+  using: "node12"
+  main: "index.js"
