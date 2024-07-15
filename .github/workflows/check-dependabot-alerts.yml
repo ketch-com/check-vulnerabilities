@@ -7,7 +7,7 @@ on:
 jobs:
   check_alerts:
     runs-on: ubuntu-latest
-    permissions: read-all
+    permissions: write-all
 
     steps:
       - name: Checkout repository
