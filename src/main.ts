@@ -35,6 +35,10 @@ async function run(): Promise<void> {
       `Checking for dependabot alerts with severity ${failThreshold} or higher...`
     )
 
+    core.debug(
+      `Making request to "GET /repos/${context.repo.owner}/${context.repo.repo}/dependabot/alerts"`
+    )
+
     const {data: alerts} = await octokit.request(
       'GET /repos/{owner}/{repo}/dependabot/alerts',
       {
