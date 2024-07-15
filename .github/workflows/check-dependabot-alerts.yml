@@ -4,6 +4,9 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+permissions:
+  security-events: read  # required to access Dependabot alerts
+
 jobs:
   check_alerts:
     runs-on: ubuntu-latest
