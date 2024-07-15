@@ -1,0 +1,17 @@
+name: 'Check Dependabot Alerts'
+description: 'Check for dependabot alerts before allowing the workflow to proceed'
+author: 'ketch-com'
+inputs:
+  github-token:
+    description: 'GitHub token'
+    required: true
+  fail-threshold:
+    description: 'Severity threshold at which the action should fail (low, moderate, high, critical)'
+    required: false
+    default: 'high'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+branding:
+  color: 'purple'
+  icon: 'package'
