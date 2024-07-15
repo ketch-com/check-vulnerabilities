@@ -17,5 +17,5 @@ jobs:
       - name: Check for Dependabot alerts
         uses: ketch-com/check-vulnerabilities@v0.0.3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.ACTIONS_TOKEN }}
           fail-threshold: 'moderate' # You can set this to 'low', 'moderate', 'high', or 'critical'
