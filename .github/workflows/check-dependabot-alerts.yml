@@ -4,9 +4,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-permissions:
-  contents: read
-  security-events: read  # required to access Dependabot alerts
+permissions: read-all
 
 jobs:
   check_alerts:
