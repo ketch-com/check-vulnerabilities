@@ -1,0 +1,21 @@
+name: Check Dependabot Alerts
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions: read-all
+
+jobs:
+  check_alerts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Check for Dependabot alerts
+        uses: ketch-com/check-vulnerabilities@v0.0.3
+        with:
+          github-token: ${{ secrets.ACTIONS_TOKEN }}
+          fail-threshold: 'moderate' # You can set this to 'low', 'moderate', 'high', or 'critical'
