@@ -53,6 +53,7 @@ async function run() {
             return;
         }
         core.info(`Checking for dependabot alerts with severity ${failThreshold} or higher...`);
+        core.debug(`Making request to "GET /repos/${context.repo.owner}/${context.repo.repo}/dependabot/alerts"`);
         const { data: alerts } = await octokit.request('GET /repos/{owner}/{repo}/dependabot/alerts', {
             owner: context.repo.owner,
             repo: context.repo.repo
