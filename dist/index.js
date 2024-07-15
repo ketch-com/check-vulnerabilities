@@ -52,10 +52,12 @@ async function run() {
             core.setFailed(`Invalid fail-threshold value: ${failThreshold}. Must be one of ${severityLevels.join(', ')}`);
             return;
         }
+        core.info(`Checking for dependabot alerts with severity ${failThreshold} or higher...`);
         const { data: alerts } = await octokit.request('GET /repos/{owner}/{repo}/dependabot/alerts', {
             owner: context.repo.owner,
             repo: context.repo.repo
         });
+        core.info(`Fetched ${alerts.length} alerts.`);
         const overThresholdAlerts = alerts.filter((alert) => severityLevels.indexOf(alert.severity) >= thresholdIndex);
         if (overThresholdAlerts.length > 0) {
             core.setFailed(`There are ${overThresholdAlerts.length} dependabot alerts with severity ${failThreshold} or higher.`);
