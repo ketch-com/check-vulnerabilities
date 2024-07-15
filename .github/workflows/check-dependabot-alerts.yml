@@ -4,11 +4,10 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-permissions: read-all
-
 jobs:
   check_alerts:
     runs-on: ubuntu-latest
+    permissions: read-all
 
     steps:
       - name: Checkout repository
