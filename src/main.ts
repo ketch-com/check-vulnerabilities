@@ -31,6 +31,10 @@ async function run(): Promise<void> {
       return
     }
 
+    core.info(
+      `Checking for dependabot alerts with severity ${failThreshold} or higher...`
+    )
+
     const {data: alerts} = await octokit.request(
       'GET /repos/{owner}/{repo}/dependabot/alerts',
       {
@@ -38,6 +42,8 @@ async function run(): Promise<void> {
         repo: context.repo.repo
       }
     )
+
+    core.info(`Fetched ${alerts.length} alerts.`)
 
     const overThresholdAlerts = alerts.filter(
       (alert: DependabotAlert) =>
